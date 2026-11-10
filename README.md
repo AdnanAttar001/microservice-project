@@ -67,9 +67,9 @@ microservice-project/
 
 Nginx receives client requests on port 80 and forwards them to the appropriate Node.js microservice using proxy_pass.
 
-Endpoint	Backend Service
-/users	User Service
-/products	Product Service
+Endpoint        Backend Service
+/users  User Service
+/products       Product Service
 2. User Service
 
 A Node.js microservice responsible for handling user-related requests.
@@ -163,10 +163,10 @@ docker ps
 
 Expected containers:
 
-Container	Service	Port
-nginx-proxy	Nginx	80
-user-service	Node.js	3001 (internal)
-product-service	Node.js	3002 (internal)
+Container       Service Port
+nginx-proxy     Nginx   80
+user-service    Node.js 3001 (internal)
+product-service Node.js 3002 (internal)
 Step 5: Check Container Logs
 bash
 docker compose logs -f
@@ -217,16 +217,16 @@ json
 ]
 
 🐳 Docker Commands
-Command	Description
-docker ps	View running containers
-docker images	List Docker images
-docker compose up -d	Start containers
-docker compose down	Stop and remove containers
-docker compose restart	Restart containers
-docker compose logs -f	View application logs
-docker compose build	Build Docker images
-docker compose down --rmi local	Remove project containers and local images
-docker exec -it nginx-proxy sh	Access Nginx container
+Command Description
+docker ps       View running containers
+docker images   List Docker images
+docker compose up -d    Start containers
+docker compose down     Stop and remove containers
+docker compose restart  Restart containers
+docker compose logs -f  View application logs
+docker compose build    Build Docker images
+docker compose down --rmi local Remove project containers and local images
+docker exec -it nginx-proxy sh  Access Nginx container
 🔄 Request Flow
 Client sends an HTTP request to Nginx on port 80.
 Nginx receives the incoming request.
