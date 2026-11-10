@@ -157,6 +157,8 @@ curl http://localhost/users
 
 curl http://localhost/products
 
+
+
 Key Implementation Highlights
 
 Microservices Architecture: Independent Node.js services for user and product operations.
@@ -172,6 +174,8 @@ Container Networking: Services communicate through a dedicated Docker network.
 Centralized Entry Point: Clients access backend services through Nginx rather than exposing each backend port publicly.
 
 Simplified Deployment: Docker Compose manages the entire application stack.
+
+
 
 Security & Production Considerations
 
@@ -195,6 +199,8 @@ Configure proper backend readiness and failure handling.
 
 Use pinned and regularly updated container image versions.
 
+
+
 Future Enhancements
 
 The architecture can be extended with additional DevOps and cloud-native capabilities:
@@ -214,6 +220,8 @@ Integrate Prometheus and Grafana for monitoring.
 Implement centralized logging using the ELK Stack.
 
 Introduce Kubernetes for container orchestration.
+
+
 
 Learning Outcomes
 
