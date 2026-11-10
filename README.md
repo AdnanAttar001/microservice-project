@@ -8,7 +8,7 @@ The application consists of multiple independent Node.js microservices deployed 
 Docker Compose is used to build, manage, and deploy all containers efficiently.
 
 🏗️ Architecture
-text
+
                   Client / Browser
                          |
                          | HTTP Request
