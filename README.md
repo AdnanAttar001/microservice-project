@@ -266,11 +266,11 @@ Implement Prometheus and Grafana monitoring.
 Add automated testing and health checks.
 👨‍💻 Author
 
-Adnan Attar
+Your Name
 
 DevOps | Docker | Kubernetes | AWS | Linux | Jenkins | CI/CD
 
-GitHub: https://github.com/AdnanAttar001
+GitHub: https://github.com/YOUR_USERNAME
 
 ⭐ If you find this project useful, consider giving this repository a star!
 
