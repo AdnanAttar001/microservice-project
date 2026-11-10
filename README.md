@@ -105,6 +105,7 @@ Return product information in JSON format.
 Process requests routed through Nginx.
 
 Prerequisites
+
 Ensure the following tools are installed before deploying the application:
 
 Docker Engine
