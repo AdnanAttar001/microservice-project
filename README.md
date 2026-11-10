@@ -1,52 +1,74 @@
-2-Tier Architecture Microservice Deployment using Docker, Nginx & Node.js
+2-Tier Microservices Architecture Deployment Using Docker, Nginx & Node.js
 
+!Docker !Nginx !Node.js !Express.js !Architecture !Docker Compose
 
-📌 Project Overview
+Project Overview
 
-This project demonstrates the implementation of a 2-Tier Microservice Architecture using Docker, Nginx Reverse Proxy, and Node.js.
+This project demonstrates the implementation and deployment of a 2-Tier Microservices Architecture using Docker, Nginx Reverse Proxy, and Node.js.
 
-The application consists of multiple independent Node.js microservices deployed inside Docker containers. Nginx acts as a reverse proxy and routes incoming HTTP requests to the appropriate backend service using proxy_pass.
+The application consists of independently deployed Node.js microservices, with Nginx serving as a centralized entry point to route incoming HTTP requests to the appropriate backend services using proxy_pass.
 
-Docker Compose is used to build, manage, and deploy all containers efficiently.
+Docker is used to containerize individual services, while Docker Compose simplifies multi-container deployment, networking, and service management.
 
-🏗️ Architecture
+The primary objective is to understand containerized application deployment, reverse proxy configuration, service discovery, and communication between distributed application components.
 
-                  Client / Browser
-                         |
-                         | HTTP Request
-                         v
-                 +---------------+
-                 |     NGINX     |
-                 | Reverse Proxy |
-                 |   Port: 80    |
-                 +---------------+
-                         |
-                    proxy_pass
-                         |
-              +----------+----------+
-              |                     |
-              v                     v
-       +--------------+      +----------------+
-       | User Service |      | Product Service|
-       |   Node.js    |      |    Node.js     |
-       |  Port: 3001  |      |   Port: 3002   |
-       +--------------+      +----------------+
-              |                     |
-              +----------+----------+
-                         |
-                   Docker Network
+Architecture Diagram
 
-🚀 Technologies Used
-Node.js – Backend application development.
-Express.js – REST API framework.
-Nginx – Reverse proxy and request routing.
-Docker – Containerization.
-Docker Compose – Multi-container orchestration.
-Linux – Deployment environment.
-📂 Project Structure
+                    CLIENT / BROWSER
+                           |
+                           |
+                      HTTP :80
+                           |
+                           v
+                +----------------------+
+                |                      |
+                |       NGINX          |
+                |   Reverse Proxy      |
+                |   Port: 80           |
+                |                      |
+                +----------------------+
+                           |
+                     proxy_pass
+                           |
+                +----------+----------+
+                |                     |
+                v                     v
+       +----------------+    +------------------+
+       |                |    |                  |
+       |  USER SERVICE  |    | PRODUCT SERVICE  |
+       |                |    |                  |
+       |   Node.js      |    |    Node.js       |
+       |   Express.js   |    |    Express.js    |
+       |   Port: 3001   |    |    Port: 3002    |
+       |                |    |                  |
+       +----------------+    +------------------+
+                |                     |
+                +----------+----------+
+                           |
+                    DOCKER NETWORK
+                           |
+                  DOCKER COMPOSE
 
-microservice-project/
+Architecture Workflow
+The client sends an HTTP request to the Nginx reverse proxy.
+Nginx listens on port 80 and evaluates the incoming request URL.
+Based on the URL path, Nginx forwards the request using proxy_pass.
+The appropriate Node.js microservice processes the request.
+The backend service returns the response to Nginx.
+Nginx forwards the response to the client.
+Technology Stack
+Technology	Purpose
+Node.js	Backend application runtime
+Express.js	REST API development
+Nginx	Reverse proxy and request routing
+Docker	Application containerization
+Docker Compose	Multi-container orchestration
+Docker Network	Inter-container communication
+Linux	Deployment environment
+Git & GitHub	Version control and project management
+Project Structure
 
+2-tier-microservices/
 │
 ├── nginx/
 │   └── nginx.conf
@@ -65,27 +87,41 @@ microservice-project/
 │
 └── README.md
 
-⚙️ Architecture Components
+Microservices Description
 1. Nginx Reverse Proxy
 
-Nginx receives client requests on port 80 and forwards them to the appropriate Node.js microservice using proxy_pass.
+Nginx acts as the single entry point for incoming application traffic.
 
-Endpoint	Backend Service
-/users	User Service
-/products	Product Service
-2. User Service
+Responsibilities:
 
-A Node.js microservice responsible for handling user-related requests.
+Accept incoming HTTP requests on port 80.
+Route requests based on URL paths.
+Forward requests to the appropriate Node.js backend.
+Handle communication between clients and backend services.
+Provide a centralized entry point for the application.
 
-Port: 3001
+Routing Configuration
 
-Endpoint:
+Request Path	Backend Service	Internal Port
+/users	User Service	3001
+/products	Product Service	3002
+2. User Microservice
+
+A standalone Node.js application developed using Express.js.
+
+Responsibilities:
+
+Handle user-related API requests.
+Return user information in JSON format.
+Process requests routed through Nginx.
+
+API Endpoint
 
 http
 GET /users
 
 
-Sample Response:
+Sample Response
 
 json
 [
@@ -99,19 +135,25 @@ json
   }
 ]
 
-3. Product Service
+3. Product Microservice
 
-A Node.js microservice responsible for handling product-related requests.
+A separate Node.js application responsible for product-related API operations.
 
-Port: 3002
+Responsibilities:
 
-Endpoint:
+Handle product-related API requests.
+Return product information in JSON format.
+Process requests routed through Nginx.
 
+API Endpoint
+
+http
 GET /products
 
 
-Sample Response:
+Sample Response
 
+json
 [
   {
     "id": 101,
@@ -123,155 +165,175 @@ Sample Response:
   }
 ]
 
-🛠️ Prerequisites
+Prerequisites
 
-Before deploying the project, install:
+Ensure the following tools are installed before deploying the application:
 
-Docker
-Docker Compose (Docker Compose V2 plugin)
+Docker Engine
+Docker Compose V2
 Git
-Linux / Ubuntu / Windows with Docker Desktop
+Linux / Ubuntu or Windows with Docker Desktop
 
-Verify installations:
+Verify the installations:
 
+bash
 docker --version
 docker compose version
 git --version
 
-🚀 Deployment Instructions
+Deployment Guide
 Step 1: Clone the Repository
+bash
+git clone https://github.com/YOUR_USERNAME/2-tier-microservices.git
 
-git clone https://github.com/YOUR_USERNAME/microservice-project.git
-
-cd microservice-project
-
-
-Replace YOUR_USERNAME with your GitHub username.
+cd 2-tier-microservices
 
 Step 2: Build Docker Images
 
+Build individual microservice images using Docker Compose.
+
+bash
 docker compose build
 
-Step 3: Start Containers
+Step 3: Start Application Containers
 
+Deploy all services in detached mode.
+
+bash
 docker compose up -d
 
-Step 4: Verify Running Containers
-
+Step 4: Verify Container Status
+bash
 docker ps
 
 
-Expected containers:
+Expected deployment:
 
-Container	Service	Port
-nginx-proxy	Nginx	80
-user-service	Node.js	3001 (internal)
-product-service	Node.js	3002 (internal)
-Step 5: Check Container Logs
-
+Container	Component	Port
+nginx-proxy	Nginx Reverse Proxy	80
+user-service	User Microservice	3001 (internal)
+product-service	Product Microservice	3002 (internal)
+Step 5: Verify Application Logs
+bash
 docker compose logs -f
 
-🧪 Application Testing
+Application Testing & Validation
 
-After successful deployment, test the following endpoints.
+Once all containers are running, verify the application using a browser, Postman, or cURL.
 
-1. Nginx Reverse Proxy
+1. Verify Nginx
 
-
+bash
 curl http://localhost/
 
 
-Expected output:
+Expected response:
 
-
+text
 Nginx Reverse Proxy is Running!
 
 
-2. User Service
+2. Test User Microservice
 
+bash
 curl http://localhost/users
 
 
-Expected output:
+Expected response:
 
-
+json
 [
   {"id":1,"name":"John"},
   {"id":2,"name":"David"}
 ]
 
 
-3. Product Service
+3. Test Product Microservice
 
-
+bash
 curl http://localhost/products
 
 
-Expected output:
+Expected response:
 
-
+json
 [
   {"id":101,"name":"Laptop"},
   {"id":102,"name":"Mobile"}
 ]
 
-🐳 Docker Commands
+Docker Management Commands
 Command	Description
-docker ps	View running containers
-docker images	List Docker images
-docker compose up -d	Start containers
+docker ps	Display running containers
+docker images	List available Docker images
+docker compose build	Build application images
+docker compose up -d	Start all application services
 docker compose down	Stop and remove containers
-docker compose restart	Restart containers
-docker compose logs -f	View application logs
-docker compose build	Build Docker images
-docker compose down --rmi local	Remove project containers and local images
-docker exec -it nginx-proxy sh	Access Nginx container
-🔄 Request Flow
-Client sends an HTTP request to Nginx on port 80.
-Nginx receives the incoming request.
-Nginx checks the URL path.
-Based on the URL, Nginx forwards the request to the corresponding Node.js microservice.
-The microservice processes the request.
-The backend sends a response to Nginx.
-Nginx returns the response to the client.
-🔐 Security & Best Practices
+docker compose restart	Restart services
+docker compose logs -f	Monitor application logs
+docker compose ps	Check service status
+docker compose down --rmi local	Remove containers and locally built images
+docker exec -it nginx-proxy sh	Access Nginx container shell
+Key Implementation Highlights
+Microservices Architecture: Independent Node.js services for user and product operations.
+Reverse Proxy: Nginx routes HTTP requests using proxy_pass.
+Containerization: Each microservice runs inside its own Docker container.
+Service Discovery: Docker Compose service names enable internal container communication.
+Container Networking: Services communicate through a dedicated Docker network.
+Centralized Entry Point: Clients access backend services through Nginx rather than exposing each backend port publicly.
+Simplified Deployment: Docker Compose manages the entire application stack.
+Security & Production Considerations
 
-For production deployment, consider implementing:
+The current implementation is designed as a learning and demonstration project. Before production deployment, consider:
 
-HTTPS using SSL/TLS certificates.
-Nginx security headers.
-Health checks for containers.
-Docker resource limits.
-Environment variables for sensitive configuration.
-Centralized logging and monitoring.
-Non-root Docker containers.
-Regular Docker image updates.
-🎯 Project Objectives
-Understand 2-Tier Architecture.
-Implement microservices using Node.js.
-Configure Nginx Reverse Proxy.
-Understand Nginx proxy_pass.
-Containerize applications using Docker.
-Deploy multiple services using Docker Compose.
-Understand Docker networking and service discovery.
-Test API routing through a single entry point.
-🔮 Future Enhancements
+Configure HTTPS using SSL/TLS certificates.
+Implement Nginx security headers.
+Add container health checks.
+Run containers using non-root users.
+Configure CPU and memory resource limits.
+Use environment variables and secrets management.
+Implement centralized logging and monitoring.
+Configure proper backend readiness and failure handling.
+Use pinned and regularly updated container image versions.
+Future Enhancements
+
+The architecture can be extended with additional DevOps and cloud-native capabilities:
+
 Integrate MongoDB for persistent data storage.
-Implement load balancing with multiple backend replicas.
+Implement Nginx load balancing with multiple backend replicas.
 Configure HTTPS using Let's Encrypt.
-Integrate Jenkins for CI/CD automation.
+Implement CI/CD pipelines using Jenkins or GitHub Actions.
 Deploy the application on AWS EC2.
-Implement Prometheus and Grafana monitoring.
-Add automated testing and health checks.
+Integrate Prometheus and Grafana for monitoring.
+Implement centralized logging using the ELK Stack.
+Introduce Kubernetes for container orchestration.
+Learning Outcomes
 
-👨‍💻 Author
+Through this project, the following practical concepts are demonstrated:
 
-Adnan Attar
+Understanding 2-Tier application architecture.
+Developing REST APIs using Node.js and Express.js.
+Configuring Nginx as a reverse proxy.
+Understanding Nginx proxy_pass directives.
+Building and managing Docker images.
+Deploying multiple containers using Docker Compose.
+Understanding Docker bridge networking and service discovery.
+Testing and validating microservice communication.
+Troubleshooting containerized applications.
+Author
 
-DevOps | Docker | Kubernetes | AWS | Linux | Jenkins | CI/CD
+Your Name
 
-GitHub: https://github.com/AdnanAttar001
+DevOps Engineer | Cloud | Docker | Kubernetes | AWS | Linux | Jenkins | CI/CD
 
-⭐ If you find this project useful, consider giving this repository a star!
+GitHub: Your GitHub Profile
+LinkedIn: Your LinkedIn Profile
+License
 
-Note: This project is intended for learning and demonstrating Docker-based microservice deployment and Nginx reverse proxy configuration.
+This project is available for educational and learning purposes.
+
+Acknowledgements
+
+Built as a hands-on DevOps project to demonstrate containerization, reverse proxy configuration, and multi-service application deployment.
+
+If you find this project useful, please consider giving this repository a ⭐ on GitHub.
