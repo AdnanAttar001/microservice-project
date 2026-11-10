@@ -42,7 +42,7 @@ Docker – Containerization.
 Docker Compose – Multi-container orchestration.
 Linux – Deployment environment.
 📂 Project Structure
-text
+
 microservice-project/
 │
 ├── nginx/
@@ -104,13 +104,11 @@ Port: 3002
 
 Endpoint:
 
-http
 GET /products
 
 
 Sample Response:
 
-json
 [
   {
     "id": 101,
@@ -133,14 +131,13 @@ Linux / Ubuntu / Windows with Docker Desktop
 
 Verify installations:
 
-bash
 docker --version
 docker compose version
 git --version
 
 🚀 Deployment Instructions
 Step 1: Clone the Repository
-bash
+
 git clone https://github.com/YOUR_USERNAME/microservice-project.git
 
 cd microservice-project
@@ -149,15 +146,15 @@ cd microservice-project
 Replace YOUR_USERNAME with your GitHub username.
 
 Step 2: Build Docker Images
-bash
+
 docker compose build
 
 Step 3: Start Containers
-bash
+
 docker compose up -d
 
 Step 4: Verify Running Containers
-bash
+
 docker ps
 
 
@@ -168,7 +165,7 @@ nginx-proxy	Nginx	80
 user-service	Node.js	3001 (internal)
 product-service	Node.js	3002 (internal)
 Step 5: Check Container Logs
-bash
+
 docker compose logs -f
 
 🧪 Application Testing
@@ -177,25 +174,24 @@ After successful deployment, test the following endpoints.
 
 1. Nginx Reverse Proxy
 
-bash
+
 curl http://localhost/
 
 
 Expected output:
 
-text
+
 Nginx Reverse Proxy is Running!
 
 
 2. User Service
 
-bash
 curl http://localhost/users
 
 
 Expected output:
 
-json
+
 [
   {"id":1,"name":"John"},
   {"id":2,"name":"David"}
@@ -204,13 +200,13 @@ json
 
 3. Product Service
 
-bash
+
 curl http://localhost/products
 
 
 Expected output:
 
-json
+
 [
   {"id":101,"name":"Laptop"},
   {"id":102,"name":"Mobile"}
@@ -264,13 +260,14 @@ Integrate Jenkins for CI/CD automation.
 Deploy the application on AWS EC2.
 Implement Prometheus and Grafana monitoring.
 Add automated testing and health checks.
+
 👨‍💻 Author
 
-Your Name
+Adnan Attar
 
 DevOps | Docker | Kubernetes | AWS | Linux | Jenkins | CI/CD
 
-GitHub: https://github.com/YOUR_USERNAME
+GitHub: https://github.com/AdnanAttar001
 
 ⭐ If you find this project useful, consider giving this repository a star!
 
