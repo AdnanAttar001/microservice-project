@@ -1,4 +1,6 @@
 2-Tier Architecture Microservice Deployment using Docker, Nginx & Node.js
+
+
 📌 Project Overview
 
 This project demonstrates the implementation of a 2-Tier Microservice Architecture using Docker, Nginx Reverse Proxy, and Node.js.
@@ -44,6 +46,7 @@ Linux – Deployment environment.
 📂 Project Structure
 
 microservice-project/
+
 │
 ├── nginx/
 │   └── nginx.conf
