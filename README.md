@@ -141,6 +141,7 @@ Step 5: Verify Application Logs
 docker compose logs -f
 
 Application Testing & Validation
+
 Once all containers are running, verify the application using a browser, Postman, or cURL.
 
 1. Verify Nginx
@@ -158,11 +159,17 @@ curl http://localhost/products
 Key Implementation Highlights
 
 Microservices Architecture: Independent Node.js services for user and product operations.
+
 Reverse Proxy: Nginx routes HTTP requests using proxy_pass.
+
 Containerization: Each microservice runs inside its own Docker container.
+
 Service Discovery: Docker Compose service names enable internal container communication.
+
 Container Networking: Services communicate through a dedicated Docker network.
+
 Centralized Entry Point: Clients access backend services through Nginx rather than exposing each backend port publicly.
+
 Simplified Deployment: Docker Compose manages the entire application stack.
 
 Security & Production Considerations
@@ -170,13 +177,21 @@ Security & Production Considerations
 The current implementation is designed as a learning and demonstration project. Before production deployment, consider:
 
 Configure HTTPS using SSL/TLS certificates.
+
 Implement Nginx security headers.
+
 Add container health checks.
+
 Run containers using non-root users.
+
 Configure CPU and memory resource limits.
+
 Use environment variables and secrets management.
+
 Implement centralized logging and monitoring.
+
 Configure proper backend readiness and failure handling.
+
 Use pinned and regularly updated container image versions.
 
 Future Enhancements
@@ -184,12 +199,19 @@ Future Enhancements
 The architecture can be extended with additional DevOps and cloud-native capabilities:
 
 Integrate MongoDB for persistent data storage.
+
 Implement Nginx load balancing with multiple backend replicas.
+
 Configure HTTPS using Let's Encrypt.
+
 Implement CI/CD pipelines using Jenkins or GitHub Actions.
+
 Deploy the application on AWS EC2.
+
 Integrate Prometheus and Grafana for monitoring.
+
 Implement centralized logging using the ELK Stack.
+
 Introduce Kubernetes for container orchestration.
 
 Learning Outcomes
@@ -197,13 +219,21 @@ Learning Outcomes
 Through this project, the following practical concepts are demonstrated:
 
 Understanding 2-Tier application architecture.
+
 Developing REST APIs using Node.js and Express.js.
+
 Configuring Nginx as a reverse proxy.
+
 Understanding Nginx proxy_pass directives.
+
 Building and managing Docker images.
+
 Deploying multiple containers using Docker Compose.
+
 Understanding Docker bridge networking and service discovery.
+
 Testing and validating microservice communication.
+
 Troubleshooting containerized applications.
 
 Author
