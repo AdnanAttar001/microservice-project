@@ -1,6 +1,6 @@
 2-Tier Microservices Architecture Deployment Using Docker, Nginx & Node.js
 
-!Docker!Nginx,!Node.js,!Express.js!Architecture! Docker Compose
+Docker!Nginx,!Node.js,!Express.js!Architecture! Docker Compose
 
 Project Overview
 
@@ -52,10 +52,15 @@ Architecture Diagram
 Architecture Workflow
 
 The client sends an HTTP request to the Nginx reverse proxy.
+
 Nginx listens on port 80 and evaluates the incoming request URL.
+
 Based on the URL path, Nginx forwards the request using proxy_pass.
+
 The appropriate Node.js microservice processes the request.
+
 The backend service returns the response to Nginx.
+
 Nginx forwards the response to the client.
 
 Microservices Description
