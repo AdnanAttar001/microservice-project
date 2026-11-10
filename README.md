@@ -251,7 +251,7 @@ Adnan Attar
 
 DevOps Engineer | Cloud | Docker | Kubernetes | AWS | Linux | Jenkins | CI/CD
 
-GitHub: https://AdnanAttar001
+GitHub: https://github.com/AdnanAttar001
 
 Acknowledgements
 Built as a hands-on DevOps project to demonstrate containerization, reverse proxy configuration, and multi-service application deployment.
