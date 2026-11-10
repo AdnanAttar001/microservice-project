@@ -50,6 +50,7 @@ Architecture Diagram
                   DOCKER COMPOSE
 
 Architecture Workflow
+
 The client sends an HTTP request to the Nginx reverse proxy.
 Nginx listens on port 80 and evaluates the incoming request URL.
 Based on the URL path, Nginx forwards the request using proxy_pass.
