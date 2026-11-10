@@ -63,6 +63,8 @@ The backend service returns the response to Nginx.
 
 Nginx forwards the response to the client.
 
+
+
 Microservices Description
 
 1. Nginx Reverse Proxy
@@ -71,9 +73,13 @@ Nginx acts as the single entry point for incoming application traffic.
 Responsibilities:
 
 Accept incoming HTTP requests on port 80.
+
 Route requests based on URL paths.
+
 Forward requests to the appropriate Node.js backend.
+
 Handle communication between clients and backend services.
+
 Provide a centralized entry point for the application.
 
 2. User Microservice
@@ -82,7 +88,9 @@ A standalone Node.js application developed using Express.js.
 Responsibilities:
 
 Handle user-related API requests.
+
 Return user information in JSON format.
+
 Process requests routed through Nginx.
 
 3. Product Microservice
@@ -91,21 +99,27 @@ A separate Node.js application responsible for product-related API operations.
 Responsibilities:
 
 Handle product-related API requests.
+
 Return product information in JSON format.
+
 Process requests routed through Nginx.
 
 Prerequisites
 Ensure the following tools are installed before deploying the application:
 
 Docker Engine
+
 Docker Compose V2
+
 Git
+
 Linux / Ubuntu or Windows with Docker Desktop
 
 Deployment Guide
 Step 1: Clone the Repository
 
 git clone https://github.com/AdnanAttar001/microservice-project
+
 cd microservice-project
 
 Step 2: Build Docker Images
